@@ -3,3 +3,4 @@
 bats
 openssl
 /usr/bin/c_rehash
+p11-kit

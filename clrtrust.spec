@@ -4,17 +4,20 @@
 #
 Name     : clrtrust
 Version  : 0.0.1
-Release  : 4
+Release  : 5
 URL      : https://github.com/clearlinux/clrtrust/archive/v0.0.1.tar.gz
 Source0  : https://github.com/clearlinux/clrtrust/archive/v0.0.1.tar.gz
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: clrtrust-bin
+Requires: /usr/bin/c_rehash
 Requires: openssl
+Requires: p11-kit
 BuildRequires : /usr/bin/c_rehash
 BuildRequires : bats
 BuildRequires : openssl
+BuildRequires : p11-kit
 
 %description
 No detailed description available
@@ -35,7 +38,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1506720778
+export SOURCE_DATE_EPOCH=1506750377
 make V=1  %{?_smp_mflags}
 
 %check
@@ -46,7 +49,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check
 
 %install
-export SOURCE_DATE_EPOCH=1506720778
+export SOURCE_DATE_EPOCH=1506750377
 rm -rf %{buildroot}
 %make_install
 
