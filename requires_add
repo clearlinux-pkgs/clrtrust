@@ -2,4 +2,3 @@
 # picked up automatically. One name per line, no whitespace.
 p11-kit
 openssl
-/usr/bin/c_rehash

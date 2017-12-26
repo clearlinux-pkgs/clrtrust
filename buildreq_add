@@ -2,5 +2,4 @@
 # picked up automatically. One name per line, no whitespace.
 bats
 openssl
-/usr/bin/c_rehash
 p11-kit
