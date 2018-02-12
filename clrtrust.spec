@@ -6,7 +6,7 @@
 #
 Name     : clrtrust
 Version  : 0.0.6
-Release  : 11
+Release  : 12
 URL      : https://github.com/clearlinux/clrtrust/releases/download/v0.0.6/clrtrust-0.0.6.tar.gz
 Source0  : https://github.com/clearlinux/clrtrust/releases/download/v0.0.6/clrtrust-0.0.6.tar.gz
 Source99 : https://github.com/clearlinux/clrtrust/releases/download/v0.0.6/clrtrust-0.0.6.tar.gz.asc
@@ -46,7 +46,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1514312344
+export SOURCE_DATE_EPOCH=1518417992
 make  %{?_smp_mflags}
 
 %check
@@ -57,7 +57,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check
 
 %install
-export SOURCE_DATE_EPOCH=1514312344
+export SOURCE_DATE_EPOCH=1518417992
 rm -rf %{buildroot}
 %make_install
 
