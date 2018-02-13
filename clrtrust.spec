@@ -6,7 +6,7 @@
 #
 Name     : clrtrust
 Version  : 0.0.6
-Release  : 12
+Release  : 13
 URL      : https://github.com/clearlinux/clrtrust/releases/download/v0.0.6/clrtrust-0.0.6.tar.gz
 Source0  : https://github.com/clearlinux/clrtrust/releases/download/v0.0.6/clrtrust-0.0.6.tar.gz
 Source99 : https://github.com/clearlinux/clrtrust/releases/download/v0.0.6/clrtrust-0.0.6.tar.gz.asc
