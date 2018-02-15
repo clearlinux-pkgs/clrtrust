@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xC9D50845DE5519CB (arzhan@kinzhalin.com)
 #
 Name     : clrtrust
-Version  : 0.0.6
-Release  : 13
-URL      : https://github.com/clearlinux/clrtrust/releases/download/v0.0.6/clrtrust-0.0.6.tar.gz
-Source0  : https://github.com/clearlinux/clrtrust/releases/download/v0.0.6/clrtrust-0.0.6.tar.gz
-Source99 : https://github.com/clearlinux/clrtrust/releases/download/v0.0.6/clrtrust-0.0.6.tar.gz.asc
+Version  : 0.0.7
+Release  : 14
+URL      : https://github.com/clearlinux/clrtrust/releases/download/v0.0.7/clrtrust-0.0.7.tar.gz
+Source0  : https://github.com/clearlinux/clrtrust/releases/download/v0.0.7/clrtrust-0.0.7.tar.gz
+Source99 : https://github.com/clearlinux/clrtrust/releases/download/v0.0.7/clrtrust-0.0.7.tar.gz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -39,14 +39,14 @@ bin components for the clrtrust package.
 
 
 %prep
-%setup -q -n clrtrust-0.0.6
+%setup -q -n clrtrust-0.0.7
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1518417992
+export SOURCE_DATE_EPOCH=1518669401
 make  %{?_smp_mflags}
 
 %check
@@ -57,7 +57,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check
 
 %install
-export SOURCE_DATE_EPOCH=1518417992
+export SOURCE_DATE_EPOCH=1518669401
 rm -rf %{buildroot}
 %make_install
 
