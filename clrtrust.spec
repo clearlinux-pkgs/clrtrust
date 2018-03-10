@@ -6,7 +6,7 @@
 #
 Name     : clrtrust
 Version  : 0.0.8
-Release  : 14
+Release  : 15
 URL      : https://github.com/clearlinux/clrtrust/releases/download/v0.0.8/clrtrust-0.0.8.tar.gz
 Source0  : https://github.com/clearlinux/clrtrust/releases/download/v0.0.8/clrtrust-0.0.8.tar.gz
 Source99 : https://github.com/clearlinux/clrtrust/releases/download/v0.0.8/clrtrust-0.0.8.tar.gz.asc
