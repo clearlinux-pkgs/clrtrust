@@ -2,4 +2,5 @@
 # picked up automatically. One name per line, no whitespace.
 bats
 openssl
+openssl-dev
 p11-kit

@@ -5,19 +5,21 @@
 # Source0 file verified with key 0xC9D50845DE5519CB (arzhan@kinzhalin.com)
 #
 Name     : clrtrust
-Version  : 0.0.8
-Release  : 15
-URL      : https://github.com/clearlinux/clrtrust/releases/download/v0.0.8/clrtrust-0.0.8.tar.gz
-Source0  : https://github.com/clearlinux/clrtrust/releases/download/v0.0.8/clrtrust-0.0.8.tar.gz
-Source99 : https://github.com/clearlinux/clrtrust/releases/download/v0.0.8/clrtrust-0.0.8.tar.gz.asc
+Version  : 0.1.0
+Release  : 16
+URL      : https://github.com/clearlinux/clrtrust/releases/download/v0.1.0/clrtrust-0.1.0.tar.gz
+Source0  : https://github.com/clearlinux/clrtrust/releases/download/v0.1.0/clrtrust-0.1.0.tar.gz
+Source99 : https://github.com/clearlinux/clrtrust/releases/download/v0.1.0/clrtrust-0.1.0.tar.gz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: clrtrust-bin
 Requires: openssl
+Requires: openssl-lib
 Requires: p11-kit
 BuildRequires : bats
 BuildRequires : openssl
+BuildRequires : openssl-dev
 BuildRequires : p11-kit
 
 %description
@@ -39,14 +41,14 @@ bin components for the clrtrust package.
 
 
 %prep
-%setup -q -n clrtrust-0.0.8
+%setup -q -n clrtrust-0.1.0
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1520613206
+export SOURCE_DATE_EPOCH=1523865056
 make  %{?_smp_mflags}
 
 %check
@@ -57,7 +59,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check
 
 %install
-export SOURCE_DATE_EPOCH=1520613206
+export SOURCE_DATE_EPOCH=1523865056
 rm -rf %{buildroot}
 %make_install
 
@@ -67,3 +69,4 @@ rm -rf %{buildroot}
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/clrtrust
+/usr/libexec/clrtrust-helper

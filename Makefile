@@ -1,5 +1,5 @@
 PKG_NAME := clrtrust
-URL = https://github.com/clearlinux/clrtrust/releases/download/v0.0.8/clrtrust-0.0.8.tar.gz
+URL = https://github.com/clearlinux/clrtrust/releases/download/v0.1.0/clrtrust-0.1.0.tar.gz
 ARCHIVES = 
 
 include ../common/Makefile.common
