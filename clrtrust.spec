@@ -5,15 +5,17 @@
 # Source0 file verified with key 0xC9D50845DE5519CB (arzhan@kinzhalin.com)
 #
 Name     : clrtrust
-Version  : 0.1.0
-Release  : 17
-URL      : https://github.com/clearlinux/clrtrust/releases/download/v0.1.0/clrtrust-0.1.0.tar.gz
-Source0  : https://github.com/clearlinux/clrtrust/releases/download/v0.1.0/clrtrust-0.1.0.tar.gz
-Source99 : https://github.com/clearlinux/clrtrust/releases/download/v0.1.0/clrtrust-0.1.0.tar.gz.asc
+Version  : 0.1.1
+Release  : 18
+URL      : https://github.com/clearlinux/clrtrust/releases/download/v0.1.1/clrtrust-0.1.1.tar.gz
+Source0  : https://github.com/clearlinux/clrtrust/releases/download/v0.1.1/clrtrust-0.1.1.tar.gz
+Source99 : https://github.com/clearlinux/clrtrust/releases/download/v0.1.1/clrtrust-0.1.1.tar.gz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
-Requires: clrtrust-bin
+Requires: clrtrust-bin = %{version}-%{release}
+Requires: clrtrust-libexec = %{version}-%{release}
+Requires: clrtrust-license = %{version}-%{release}
 Requires: openssl
 Requires: openssl-lib
 Requires: p11-kit
@@ -35,20 +37,39 @@ checking its consistency.
 %package bin
 Summary: bin components for the clrtrust package.
 Group: Binaries
+Requires: clrtrust-libexec = %{version}-%{release}
+Requires: clrtrust-license = %{version}-%{release}
 
 %description bin
 bin components for the clrtrust package.
 
 
+%package libexec
+Summary: libexec components for the clrtrust package.
+Group: Default
+Requires: clrtrust-license = %{version}-%{release}
+
+%description libexec
+libexec components for the clrtrust package.
+
+
+%package license
+Summary: license components for the clrtrust package.
+Group: Default
+
+%description license
+license components for the clrtrust package.
+
+
 %prep
-%setup -q -n clrtrust-0.1.0
+%setup -q -n clrtrust-master
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1523865056
+export SOURCE_DATE_EPOCH=1541092331
 make  %{?_smp_mflags}
 
 %check
@@ -59,8 +80,10 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check
 
 %install
-export SOURCE_DATE_EPOCH=1523865056
+export SOURCE_DATE_EPOCH=1541092331
 rm -rf %{buildroot}
+mkdir -p %{buildroot}/usr/share/package-licenses/clrtrust
+cp COPYING %{buildroot}/usr/share/package-licenses/clrtrust/COPYING
 %make_install
 
 %files
@@ -69,4 +92,11 @@ rm -rf %{buildroot}
 %files bin
 %defattr(-,root,root,-)
 /usr/bin/clrtrust
+
+%files libexec
+%defattr(-,root,root,-)
 /usr/libexec/clrtrust-helper
+
+%files license
+%defattr(0644,root,root,0755)
+/usr/share/package-licenses/clrtrust/COPYING
