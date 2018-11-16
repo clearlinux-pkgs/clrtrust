@@ -6,7 +6,7 @@
 #
 Name     : clrtrust
 Version  : 0.1.1
-Release  : 20
+Release  : 21
 URL      : https://github.com/clearlinux/clrtrust/releases/download/v0.1.1/clrtrust-0.1.1.tar.gz
 Source0  : https://github.com/clearlinux/clrtrust/releases/download/v0.1.1/clrtrust-0.1.1.tar.gz
 Source99 : https://github.com/clearlinux/clrtrust/releases/download/v0.1.1/clrtrust-0.1.1.tar.gz.asc
