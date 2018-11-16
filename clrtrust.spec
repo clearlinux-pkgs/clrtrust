@@ -6,7 +6,7 @@
 #
 Name     : clrtrust
 Version  : 0.1.1
-Release  : 19
+Release  : 20
 URL      : https://github.com/clearlinux/clrtrust/releases/download/v0.1.1/clrtrust-0.1.1.tar.gz
 Source0  : https://github.com/clearlinux/clrtrust/releases/download/v0.1.1/clrtrust-0.1.1.tar.gz
 Source99 : https://github.com/clearlinux/clrtrust/releases/download/v0.1.1/clrtrust-0.1.1.tar.gz.asc
@@ -69,7 +69,7 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1541092331
+export SOURCE_DATE_EPOCH=1542391184
 make  %{?_smp_mflags}
 
 %check
@@ -80,7 +80,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check
 
 %install
-export SOURCE_DATE_EPOCH=1541092331
+export SOURCE_DATE_EPOCH=1542391184
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/clrtrust
 cp COPYING %{buildroot}/usr/share/package-licenses/clrtrust/COPYING
