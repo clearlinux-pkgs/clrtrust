@@ -5,11 +5,11 @@
 # Source0 file verified with key 0xC9D50845DE5519CB (arzhan@kinzhalin.com)
 #
 Name     : clrtrust
-Version  : 0.1.1
-Release  : 21
-URL      : https://github.com/clearlinux/clrtrust/releases/download/v0.1.1/clrtrust-0.1.1.tar.gz
-Source0  : https://github.com/clearlinux/clrtrust/releases/download/v0.1.1/clrtrust-0.1.1.tar.gz
-Source99 : https://github.com/clearlinux/clrtrust/releases/download/v0.1.1/clrtrust-0.1.1.tar.gz.asc
+Version  : 0.1.2
+Release  : 22
+URL      : https://github.com/clearlinux/clrtrust/releases/download/v0.1.2/clrtrust-0.1.2.tar.gz
+Source0  : https://github.com/clearlinux/clrtrust/releases/download/v0.1.2/clrtrust-0.1.2.tar.gz
+Source99 : https://github.com/clearlinux/clrtrust/releases/download/v0.1.2/clrtrust-0.1.2.tar.gz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
@@ -62,15 +62,16 @@ license components for the clrtrust package.
 
 
 %prep
-%setup -q -n clrtrust-master
+%setup -q -n clrtrust-0.1.2
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C
-export SOURCE_DATE_EPOCH=1542391184
+export SOURCE_DATE_EPOCH=1546467175
 make  %{?_smp_mflags}
+
 
 %check
 export LANG=C
@@ -80,7 +81,7 @@ export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check
 
 %install
-export SOURCE_DATE_EPOCH=1542391184
+export SOURCE_DATE_EPOCH=1546467175
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/clrtrust
 cp COPYING %{buildroot}/usr/share/package-licenses/clrtrust/COPYING
