@@ -4,3 +4,4 @@ bats
 openssl
 openssl-dev
 p11-kit
+pandoc

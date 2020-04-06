@@ -5,17 +5,18 @@
 # Source0 file verified with key 0xC9D50845DE5519CB (arzhan@kinzhalin.com)
 #
 Name     : clrtrust
-Version  : 0.1.2
-Release  : 23
-URL      : https://github.com/clearlinux/clrtrust/releases/download/v0.1.2/clrtrust-0.1.2.tar.gz
-Source0  : https://github.com/clearlinux/clrtrust/releases/download/v0.1.2/clrtrust-0.1.2.tar.gz
-Source99 : https://github.com/clearlinux/clrtrust/releases/download/v0.1.2/clrtrust-0.1.2.tar.gz.asc
+Version  : 0.1.3
+Release  : 24
+URL      : https://github.com/clearlinux/clrtrust/releases/download/v0.1.3/clrtrust-0.1.3.tar.gz
+Source0  : https://github.com/clearlinux/clrtrust/releases/download/v0.1.3/clrtrust-0.1.3.tar.gz
+Source1  : https://github.com/clearlinux/clrtrust/releases/download/v0.1.3/clrtrust-0.1.3.tar.gz.asc
 Summary  : No detailed summary available
 Group    : Development/Tools
 License  : GPL-2.0
 Requires: clrtrust-bin = %{version}-%{release}
 Requires: clrtrust-libexec = %{version}-%{release}
 Requires: clrtrust-license = %{version}-%{release}
+Requires: clrtrust-man = %{version}-%{release}
 Requires: openssl
 Requires: openssl-lib
 Requires: p11-kit
@@ -23,16 +24,14 @@ BuildRequires : bats
 BuildRequires : openssl
 BuildRequires : openssl-dev
 BuildRequires : p11-kit
+BuildRequires : pandoc
 
 %description
-# clrtrust: the Clear Trust Store Management tool
-Clear Linux\* for IntelÂ® Architecture implements a centralized TLS Trust Store
-for all its packages which use Transport Layer Security. The trust store
-contains a set of trusted Root Certificate Authorities (CAs) which Clear Linux\*
-should trust. `clrtrust` tool provides a front-end for the trust store
-management: it allows viewing, adding (trusting), removing (distrusting) CAs. It
-also provides some maitenance commands such as re-generating the trust store and
-checking its consistency.
+# clrtrust: management tool for certificate trust store
+The `clrtrust` tool provides a frontend for centralized trust store management.
+It allows for adding (trusting) and removing (distrusting) certificate
+authorities (CAs). It also provides maintenance commands for viewing and
+re-generating the trust store.
 
 %package bin
 Summary: bin components for the clrtrust package.
@@ -61,30 +60,44 @@ Group: Default
 license components for the clrtrust package.
 
 
+%package man
+Summary: man components for the clrtrust package.
+Group: Default
+
+%description man
+man components for the clrtrust package.
+
+
 %prep
-%setup -q -n clrtrust-0.1.2
+%setup -q -n clrtrust-0.1.3
+cd %{_builddir}/clrtrust-0.1.3
 
 %build
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-export LANG=C
-export SOURCE_DATE_EPOCH=1546467175
+export LANG=C.UTF-8
+export SOURCE_DATE_EPOCH=1586193160
+export GCC_IGNORE_WERROR=1
+export CFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$CFLAGS -fno-lto "
+export FFLAGS="$CFLAGS -fno-lto "
+export CXXFLAGS="$CXXFLAGS -fno-lto "
 make  %{?_smp_mflags}
 
 
 %check
-export LANG=C
+export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 make check
 
 %install
-export SOURCE_DATE_EPOCH=1546467175
+export SOURCE_DATE_EPOCH=1586193160
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/clrtrust
-cp COPYING %{buildroot}/usr/share/package-licenses/clrtrust/COPYING
+cp %{_builddir}/clrtrust-0.1.3/COPYING %{buildroot}/usr/share/package-licenses/clrtrust/f5b8c6b890f2c7664954577396afb1fed9aa550f
 %make_install
 
 %files
@@ -100,4 +113,8 @@ cp COPYING %{buildroot}/usr/share/package-licenses/clrtrust/COPYING
 
 %files license
 %defattr(0644,root,root,0755)
-/usr/share/package-licenses/clrtrust/COPYING
+/usr/share/package-licenses/clrtrust/f5b8c6b890f2c7664954577396afb1fed9aa550f
+
+%files man
+%defattr(0644,root,root,0755)
+/usr/share/man/man1/clrtrust.1
