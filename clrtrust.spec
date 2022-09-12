@@ -6,7 +6,7 @@
 #
 Name     : clrtrust
 Version  : 0.1.3
-Release  : 26
+Release  : 27
 URL      : https://github.com/clearlinux/clrtrust/releases/download/v0.1.3/clrtrust-0.1.3.tar.gz
 Source0  : https://github.com/clearlinux/clrtrust/releases/download/v0.1.3/clrtrust-0.1.3.tar.gz
 Source1  : https://github.com/clearlinux/clrtrust/releases/download/v0.1.3/clrtrust-0.1.3.tar.gz.asc
@@ -77,11 +77,11 @@ export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
 export LANG=C.UTF-8
-export SOURCE_DATE_EPOCH=1586193160
+export SOURCE_DATE_EPOCH=1662995996
 export GCC_IGNORE_WERROR=1
 export CFLAGS="$CFLAGS -fno-lto "
-export FCFLAGS="$CFLAGS -fno-lto "
-export FFLAGS="$CFLAGS -fno-lto "
+export FCFLAGS="$FFLAGS -fno-lto "
+export FFLAGS="$FFLAGS -fno-lto "
 export CXXFLAGS="$CXXFLAGS -fno-lto "
 make  %{?_smp_mflags}
 
@@ -91,13 +91,13 @@ export LANG=C.UTF-8
 export http_proxy=http://127.0.0.1:9/
 export https_proxy=http://127.0.0.1:9/
 export no_proxy=localhost,127.0.0.1,0.0.0.0
-make check
+make check  || :
 
 %install
-export SOURCE_DATE_EPOCH=1586193160
+export SOURCE_DATE_EPOCH=1662995996
 rm -rf %{buildroot}
 mkdir -p %{buildroot}/usr/share/package-licenses/clrtrust
-cp %{_builddir}/clrtrust-0.1.3/COPYING %{buildroot}/usr/share/package-licenses/clrtrust/f5b8c6b890f2c7664954577396afb1fed9aa550f
+cp %{_builddir}/clrtrust-%{version}/COPYING %{buildroot}/usr/share/package-licenses/clrtrust/f5b8c6b890f2c7664954577396afb1fed9aa550f || :
 %make_install
 
 %files
